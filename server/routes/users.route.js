@@ -1,6 +1,5 @@
 // imports
 const express = require('express');
-const userSchema = require('../models/users.model');
 const controller = require("../controllers/users.controllers");
 const middleware = require("../middleware/users.middleware");
 
