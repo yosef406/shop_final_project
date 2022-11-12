@@ -26,7 +26,7 @@ function comparePassHash(password, hash) {
     return hashedPass == hash;
 }
 
-exports.post_signup = (req, res) => {
+exports.post_register = (req, res) => {
     let userBody = req.body;
 
     userBody.password = hashPassword(userBody.password);
@@ -38,7 +38,7 @@ exports.post_signup = (req, res) => {
         .catch((err) => res.status(400).json({ message: "server error", success: false }));
 }
 
-exports.post_signin = (req, res) => {
+exports.post_login = (req, res) => {
     let { email, password } = req.body;
 
     // select name,email,password,_id from Users
@@ -88,7 +88,7 @@ exports.patch_update = async (req, res) => {
     }
 }
 
-exports.check_signup = (req, res) => {
+exports.check_register = (req, res) => {
 
     userSchema.find({ id }).then((result) => {
         if (result == null) {
