@@ -13,16 +13,7 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+
 
 
 @keyframes App-logo-spin {
@@ -33,4 +24,21 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.background {
+  background-color: rgb(230, 230, 230);
+  height: 100%;
+}
+
+.container {
+  max-width: 1400px;
+  display: flex;
+  justify-content: center;
+}
+
+.centerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

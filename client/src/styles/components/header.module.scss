@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    background-color: brown;
+    min-height: 50px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1600px;
+    width: 100%;
+    align-items: center;
+    color: white;
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.user {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
