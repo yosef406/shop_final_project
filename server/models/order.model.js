@@ -32,7 +32,7 @@ const OrdersSchema = new mongoose.Schema({
     },
     credit_card: {
         type: String,
-        maxlength: 4,
+        max: 4,
         required: true
     },
 });
