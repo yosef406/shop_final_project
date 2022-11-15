@@ -1,8 +1,8 @@
-const usersSchema = require('../models/users.model');
+const usersModel = require('../models/users.model');
 
 exports.getUserWithID = async (req, res, next) => {
     try {
-        let user = await usersSchema.findById(req.params.id);
+        let user = await usersModel.findById(req.params.id);
         req.user = user;
         next();
     } catch (error) {
@@ -11,8 +11,7 @@ exports.getUserWithID = async (req, res, next) => {
 }
 
 exports.check1 = (req, res, next) => {
-    let { id, email, password, re_password } = req.body;
-
+    let user = { id, email, password, re_password } = req.body;
     if (!id || !email || !password || !re_password) {
         res.status(200).json({ success: false, message: "messing parameters" });
         return;
@@ -23,6 +22,7 @@ exports.check1 = (req, res, next) => {
     }
     next();
 }
+
 exports.check2 = (req, res, next) => {
     let { city, street, first_name, last_name } = req.body;
 

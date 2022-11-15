@@ -26,15 +26,11 @@ const OrdersSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    order_date: {
-        type: Date,
-        required: true
-    },
     credit_card: {
         type: String,
         max: 4,
         required: true
     },
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('orders', OrdersSchema);

@@ -17,6 +17,6 @@ const ProductSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'categories',
     },
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('products', ProductSchema);

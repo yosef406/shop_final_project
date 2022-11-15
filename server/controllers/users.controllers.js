@@ -1,4 +1,4 @@
-const usersSchema = require('../models/users.model');
+const usersModel = require('../models/users.model');
 const crypto = require('crypto')
 
 function hashPassword(password, salt) {
@@ -31,11 +31,14 @@ exports.post_register = (req, res) => {
 
     userBody.password = hashPassword(userBody.password);
 
-    let user = new usersSchema(userBody);
+    let user = new usersModel(userBody);
 
     user.save()
         .then(() => res.status(201).json({ message: "User was created", success: true }))
-        .catch((err) => res.status(400).json({ message: "server error", success: false }));
+        .catch((err) => {
+            console.log("Error: ", err);
+            res.status(400).json({ message: "server error", success: false });
+        });
 }
 
 exports.post_login = (req, res) => {
@@ -43,7 +46,7 @@ exports.post_login = (req, res) => {
 
     // select name,email,password,_id from Users
     // WHERE email == users.email 
-    usersSchema
+    usersModel
         .findOne({ email })
         .then((result) => {
             if (result != null) {
@@ -89,12 +92,12 @@ exports.patch_update = async (req, res) => {
 }
 
 exports.check_register = (req, res) => {
-
-    userSchema.find({ id }).then((result) => {
+    let { id } = req.body;
+    usersModel.findOne({ id }).then((result) => {
         if (result == null) {
             res.status(200).json({ success: true, message: "user doesn't exist" });
         } else {
-            res.status(200).json({ success: false, message: "user does exist" });
+            res.status(200).json({ success: false, message: "user exist with this id" });
         }
     }).catch((err) => res.status(500).json({ success: false, message: "server error" }))
 
