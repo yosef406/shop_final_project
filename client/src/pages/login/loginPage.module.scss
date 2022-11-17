@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    margin: 30px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    // grid-template-columns: 30% 30% 30%;
+}
+
+@media only screen and (max-width: 500px) {
+    .container {
+        margin: 0;
+    }
+}

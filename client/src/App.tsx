@@ -9,7 +9,7 @@ import ShoppingPage from "./pages/shopping/ShoppingPage";
 function App() {
   return (
     <>
-      <div className={style.background}>
+      <div>
         <Header />
         <div className={style.centerContainer}>
           <div className={style.container}>

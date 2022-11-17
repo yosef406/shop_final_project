@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 360px;
+}
+
+@media only screen and (max-width: 920px) {
+    .container {
+        flex-direction: row;
+        width: 100%;
+
+        img {
+            width: 50%;
+        }
+
+        div {
+            margin-left: 20px;
+            width: 50%;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
+
+        div {
+            margin-left: 20px;
+            width: 100%;
+        }
+
+    }
+}

@@ -1,7 +1,7 @@
 import About from "../../components/about/About";
 import Featured from "../../components/featured/Featured";
 import LogIn from "../../components/login/Login";
-import style from "../../styles/pages/loginPage.module.scss";
+import style from "./loginPage.module.scss";
 
 function LogInPage() {
   return (

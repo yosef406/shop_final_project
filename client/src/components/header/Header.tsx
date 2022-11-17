@@ -1,4 +1,4 @@
-import style from "../../styles/components/header.module.scss";
+import style from "./header.module.scss";
 function Header() {
   return (
     <>
@@ -9,7 +9,10 @@ function Header() {
           </div>
           <div>
             <div>
-              <h3>Contact Us: Support@Shopi.co</h3>
+              <h3>
+                <span>Contact Us:</span>
+                <span> Support@Shopi.co</span>
+              </h3>
             </div>
             {/* <div className={style.user}>
               <label>Welcome user</label>
