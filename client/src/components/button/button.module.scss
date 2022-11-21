@@ -1,0 +1,62 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.active {
+    background-color: brown;
+    border: solid brown;
+    color: white;
+    font-size: large;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.active:hover {
+    transform: scale(1.05);
+}
+
+.active:active {
+    transform: scale(0.95);
+}
+
+.disabled {
+    background-color: grey;
+    border: solid grey;
+    color: white;
+    font-size: large;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.loading {
+    background-color: lightblue;
+    border: solid lightblue;
+    color: rgb(56, 56, 255);
+    font-size: large;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+    max-height: 25px;
+}
+
+.animateDisabled {
+    animation: disabledAnimation 400ms;
+}
+
+@keyframes disabledAnimation {
+    25% {
+
+        transform: translate(-5px);
+        border: solid red;
+        background-color: red;
+    }
+
+
+    75% {
+        transform: translate(5px);
+    }
+}
