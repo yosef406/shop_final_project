@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "./login.module.scss";
 import Card from "../card/Card";
 import Button from "../button/Button";
@@ -9,19 +9,19 @@ import useUser from "../../util/useUser";
 function LogIn() {
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
-  const { data, loading, error, sendRequest } = useFetch();
+  const { data, loading, error, request } = useFetch();
   const { addUser, signedIn, user, removeUser } = useUser();
   const navigate = useNavigate();
 
   const logInBtn = () => {
-    sendRequest("/user/login", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: emailRef.current?.value,
-        password: passwordRef.current?.value,
-      }),
+    request.post("/user/login", {
+      email: emailRef.current?.value,
+      password: passwordRef.current?.value,
     });
+  };
+
+  const startShoppingBtn = () => {
+    navigate("/");
   };
 
   useEffect(() => {
@@ -42,9 +42,7 @@ function LogIn() {
               <h1>address: {`${user.city} ${user.street}`}</h1>
               <div className={style.logOutDiv}>
                 <div>
-                  <Button onClick={() => navigate("/")}>
-                    Start Shopping 🛒
-                  </Button>
+                  <Button onClick={startShoppingBtn}>Start Shopping 🛒</Button>
                 </div>
                 <div>
                   <Button className={style.logOutBtn} onClick={removeUser}>
