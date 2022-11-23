@@ -6,6 +6,33 @@ export default function useFetch(url: string = "", options = {}) {
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const request = {
+        post: async (url: string, body: {}) => {
+            await sendRequest(url, {
+                method: "post",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+            });
+        },
+        patch: async (url: string, body: {}) => {
+            await sendRequest(url, {
+                method: "patch",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+            });
+        },
+        delete: async (url: string, body: {}) => {
+            await sendRequest(url, {
+                method: "delete",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+            });
+        },
+        get: async (url: string) => {
+            await sendRequest(url);
+        }
+    }
+
 
     const sendRequest = async (url: string, options = {}, abortController = new AbortController()) => {
         setLoading(true);
@@ -37,5 +64,5 @@ export default function useFetch(url: string = "", options = {}) {
         return () => abortController.abort();
     }, [url]);
 
-    return { data, loading, error, sendRequest };
+    return { data, loading, error, request };
 }
