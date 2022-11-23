@@ -27,7 +27,7 @@ productsRoute.get("/featured", async (req, res) => {
         let orderCount = await ordersModel.count();
         let imageData = ""
 
-        res.status(200).json({ success: true, message: "found documents", result: { productCount, orderCount, imageData } })
+        res.status(200).json({ success: true, message: "found featured", result: { productCount, orderCount, imageData } })
     } catch (error) {
         console.log("Error: ", error);
         res.status(500).json({ success: false, message: "server error" })
