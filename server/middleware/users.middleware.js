@@ -12,10 +12,17 @@ exports.getUserWithID = async (req, res, next) => {
 
 exports.check1 = (req, res, next) => {
     let user = { id, email, password, re_password } = req.body;
-    if (!id || !email || !password || !re_password) {
-        res.status(200).json({ success: false, message: "messing parameters" });
+    let messing = [];
+    if (!id || id == "") parameters.push("id");
+    if (!email || email == "") parameters.push("email");
+    if (!password || password == "") parameters.push("password");
+    if (!re_password || re_password == "") parameters.push("password confirm");
+
+    if (messing.length > 0) {
+        res.status(200).json({ success: false, message: "messing parameters", messing });
         return;
     }
+
     if (password != re_password) {
         res.status(200).json({ success: false, message: "passwords don't match" });
         return;
