@@ -1,3 +1,15 @@
+.button {
+    font-size: large;
+    border-radius: 5px;
+    padding: 5px;
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
 .row {
     display: flex;
     flex-direction: row;
@@ -8,10 +20,7 @@
     background-color: brown;
     border: solid brown;
     color: white;
-    font-size: large;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 5px;
+
 }
 
 .active:hover {
@@ -26,21 +35,17 @@
     background-color: grey;
     border: solid grey;
     color: white;
-    font-size: large;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 5px;
+
 }
 
 .loading {
     background-color: lightblue;
     border: solid lightblue;
     color: rgb(56, 56, 255);
-    font-size: large;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 5px;
-    max-height: 25px;
+
+    span {
+        margin-right: .5rem;
+    }
 }
 
 .animateDisabled {

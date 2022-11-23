@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Loading from "../loading/Loading";
 import style from "./button.module.scss";
 export default function Button(params: any) {
@@ -10,6 +10,9 @@ export default function Button(params: any) {
       btnRef.current?.classList.remove(style.animateDisabled);
     }, 400);
   };
+  useEffect(() => {
+    btnRef.current?.classList.add(params.className);
+  });
 
   return (
     <>
@@ -22,7 +25,7 @@ export default function Button(params: any) {
             : params?.loading
             ? style.loading
             : style.active
-        } ${style.row}
+        } ${style.row} ${style.button}
         `}
         onClick={params?.disabled ? playDisabledAnimations : params.onClick}
       >
