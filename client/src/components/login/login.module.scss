@@ -11,3 +11,59 @@
         width: 100%;
     }
 }
+
+.buttonDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    * {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    * {
+        margin-top: 10px;
+    }
+
+    input {
+        width: 80%;
+        font-size: large;
+        padding: 5px;
+        border-radius: 5px;
+        border: solid brown;
+        text-align: center;
+    }
+}
+
+.errorLabel {
+    font-size: larger;
+    color: crimson;
+}
+
+.logOutDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logOutBtn {
+    transform: scale(0.7);
+    margin-top: 15px !important;
+    background-color: rgb(168, 76, 76) !important;
+    border-color: rgb(168, 76, 76) !important;
+}
+
+.logOutBtn:hover {
+    transform: scale(0.75) !important;
+}
+
+.logOutBtn:active {
+    transform: scale(0.65) !important;
+}
