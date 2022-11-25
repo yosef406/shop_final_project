@@ -23,6 +23,8 @@ export default function Input(
         {params.label ? <label>{params.label}</label> : ""}
         <div className={`${style.inputDiv}`}>
           <input
+            disabled={params.disabled}
+            defaultValue={params.defaultValue}
             className={`${style.input} ${params.className ?? ""}
             ${errorLabel && errorLabel !== "" ? style.errorIn : ""}`}
             ref={params.ref}
