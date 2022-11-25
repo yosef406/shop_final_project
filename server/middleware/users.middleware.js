@@ -11,6 +11,12 @@ exports.getUserWithID = async (req, res, next) => {
 }
 
 exports.check1 = (req, res, next) => {
+    let emailRegexp = new RegExp(
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+    let passRegexp = new RegExp(
+        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+    );
     let user = { id, email, password, re_password } = req.body;
     let messing = [];
     if (!id || id == "") parameters.push("id");
@@ -19,7 +25,16 @@ exports.check1 = (req, res, next) => {
     if (!re_password || re_password == "") parameters.push("password confirm");
 
     if (messing.length > 0) {
-        res.status(200).json({ success: false, message: "messing parameters", messing });
+        res.status(200).json({ success: false, message: `messing parameters ${messing}` });
+        return;
+    }
+
+    if (!emailRegexp.test(email)) {
+        res.status(200).json({ success: false, message: "invalid email" });
+        return;
+    }
+    if (!passRegexp.test(password)) {
+        res.status(200).json({ success: false, message: "invalid password" });
         return;
     }
 
