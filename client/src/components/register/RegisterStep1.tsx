@@ -1,13 +1,14 @@
 import Card from "../card/Card";
 import Input from "../input/Input";
-
+import style from "./registerStep.module.scss";
 export default function RegisterStep1(params: any) {
   return (
     <>
       <Card>
-        <div>
+        <div className={style.form}>
           <h3>step 1</h3>
           <Input
+            disabled={params.disabled}
             label="ID"
             defaultValue={params.user.id}
             errorChecker={(e) => {
@@ -21,6 +22,7 @@ export default function RegisterStep1(params: any) {
             }}
           />
           <Input
+            disabled={params.disabled}
             label="Email"
             type={"email"}
             defaultValue={params.user.email}
@@ -48,6 +50,7 @@ export default function RegisterStep1(params: any) {
             }}
           />
           <Input
+            disabled={params.disabled}
             label="password"
             type={"password"}
             defaultValue={params.user.password}
@@ -77,6 +80,7 @@ export default function RegisterStep1(params: any) {
             }}
           />
           <Input
+            disabled={params.disabled}
             label="Password Confirm"
             type={"password"}
             defaultValue={params.user.re_password}
@@ -99,6 +103,7 @@ export default function RegisterStep1(params: any) {
               }
             }}
           />
+          <label className={style.error}>{params.error}</label>
         </div>
       </Card>
     </>
