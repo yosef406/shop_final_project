@@ -36,6 +36,7 @@ export default function useFetch(url: string = "", options = {}) {
 
     const sendRequest = async (url: string, options = {}, abortController = new AbortController()) => {
         setLoading(true);
+        setData(null);
         await fetch(process.env.REACT_APP_API_URL + url, { ...options, signal: abortController.signal }).then(res => {
             if (!res.ok) {
                 throw Error("can't fetch data!");
@@ -45,6 +46,7 @@ export default function useFetch(url: string = "", options = {}) {
             setData(data);
             setLoading(false);
             setError("");
+            if (!data.success) setError(data.message);
         }).catch((err) => {
             if (err.name === "AbortError") {
                 console.log("fetch aborted");
