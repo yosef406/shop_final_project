@@ -91,14 +91,21 @@ exports.patch_update = async (req, res) => {
     }
 }
 
-exports.check_register = (req, res) => {
-    let { id } = req.body;
-    usersModel.findOne({ id }).then((result) => {
-        if (result == null) {
+exports.check_register = async (req, res) => {
+    try {
+
+        let { id, email } = req.body;
+        let user1 = await usersModel.findOne({ id });
+        let user2 = await usersModel.findOne({ email });
+
+        if (user1 == null && user2 == null) {
             res.status(200).json({ success: true, message: "user doesn't exist" });
         } else {
-            res.status(200).json({ success: false, message: "user exist with this id" });
+            res.status(200).json({ success: false, message: "user exist with this id or email" });
         }
-    }).catch((err) => res.status(500).json({ success: false, message: "server error" }))
+
+    } catch (err) {
+        res.status(500).json({ success: false, message: "server error" })
+    }
 
 }
