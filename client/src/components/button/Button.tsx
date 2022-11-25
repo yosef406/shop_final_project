@@ -1,7 +1,13 @@
 import { useEffect, useRef } from "react";
 import Loading from "../loading/Loading";
 import style from "./button.module.scss";
-export default function Button(params: any) {
+export default function Button(
+  params: React.DOMAttributes<HTMLButtonElement> & {
+    className?: string | undefined;
+    disabled?: boolean;
+    loading?: boolean;
+  }
+) {
   const btnRef = useRef<HTMLButtonElement | null>(null);
 
   const playDisabledAnimations = () => {
@@ -11,7 +17,7 @@ export default function Button(params: any) {
     }, 400);
   };
   useEffect(() => {
-    btnRef.current?.classList.add(params.className);
+    if (params?.className) btnRef.current?.classList.add(params.className);
   });
 
   return (
