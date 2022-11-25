@@ -1,7 +1,7 @@
 .input {
     border-radius: 5px;
     font-size: larger;
-    border: solid;
+    border: solid brown;
 }
 
 .errorIn {
@@ -18,6 +18,12 @@
     align-items: center;
     margin-top: 5px;
     margin-bottom: 5px;
+    font-size: larger;
+
+    @media only screen and (max-width: 390px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 .inputDiv {
