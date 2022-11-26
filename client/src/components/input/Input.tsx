@@ -34,7 +34,9 @@ export default function Input(
             >
               {params.dropDown
                 ? params.dropDown.map((val) => (
-                    <option value={val._id}>{val.name}</option>
+                    <option key={val._id} value={val._id}>
+                      {val.name}
+                    </option>
                   ))
                 : ""}
             </select>
