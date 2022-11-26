@@ -32,7 +32,7 @@ export default function PopUp(params: any) {
   return (
     <>
       <div ref={popUpRef} className={style.popUp}>
-        <div className={style.side} onClick={hide}></div>
+        <div className={`${style.side} ${style.top}`} onClick={hide}></div>
         <div className={style.popUpRow}>
           <div className={style.side} onClick={hide}></div>
           <div className={style.main}>
@@ -40,7 +40,7 @@ export default function PopUp(params: any) {
           </div>
           <div className={style.side} onClick={hide}></div>
         </div>
-        <div className={style.side} onClick={hide}></div>
+        <div className={`${style.side} ${style.top}`} onClick={hide}></div>
       </div>
     </>
   );
