@@ -1,11 +1,10 @@
 import styling from "./card.module.scss";
 function Card(params: any) {
-  let { style, children } = params;
+  let { className, children } = params;
+
   return (
     <>
-      <div className={styling.card} style={style}>
-        {children}
-      </div>
+      <div className={`${styling.card} ${className ?? ""}`}>{children}</div>
     </>
   );
 }
