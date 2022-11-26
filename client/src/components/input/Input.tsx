@@ -2,13 +2,12 @@ import { useState } from "react";
 import categoryType from "../../types/categoryType";
 import style from "./input.module.scss";
 export default function Input(
-  params: React.InputHTMLAttributes<HTMLInputElement> & {
+  params: React.InputHTMLAttributes<HTMLInputElement | HTMLSelectElement> & {
     label?: string | undefined;
     error?: string | undefined;
     className?: string | undefined;
     dropDown?: categoryType[] | undefined;
     errorChecker?: (e: string, value?: string) => string;
-    ref?: React.LegacyRef<HTMLInputElement>;
   }
 ) {
   const [errorLabel, setError] = useState(params.error);
@@ -28,6 +27,7 @@ export default function Input(
         <div className={`${style.inputDiv}`}>
           {params.type && params.type === "dropDown" ? (
             <select
+              onChange={params.onChange}
               name={params.label}
               className={`${style.input} ${params.className ?? ""}
             ${errorLabel && errorLabel !== "" ? style.errorIn : ""}`}
@@ -46,7 +46,6 @@ export default function Input(
               defaultValue={params.defaultValue}
               className={`${style.input} ${params.className ?? ""}
           ${errorLabel && errorLabel !== "" ? style.errorIn : ""}`}
-              ref={params.ref}
               type={params.type ?? "text"}
               onChange={onChange}
             />
