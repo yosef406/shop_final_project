@@ -14,19 +14,19 @@ export default function PopUp(params: any) {
     if (
       popUpRef.current != null &&
       (params.display != null || params.display !== undefined) &&
-      (params.onDisplay != null || params.onDisplay !== undefined)
+      (params.setDisplay != null || params.setDisplay !== undefined)
     ) {
       popUpRef.current.style.display =
         params.display === true ? "flex" : "none";
     } else {
-      console.error(`'display' and 'onDisplay' must be provided,
+      console.error(`'display' and 'setDisplay' must be provided,
       \ncurrent 'display' =${params.display},\n
-      current 'onDisplay' = ${params.onDisplay}`);
+      current 'setDisplay' = ${params.setDisplay}`);
     }
   });
 
   const hide = () => {
-    params.onDisplay(false);
+    params.setDisplay(false);
   };
 
   return (
