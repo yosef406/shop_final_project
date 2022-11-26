@@ -6,7 +6,7 @@ export default function Input(
     label?: string | undefined;
     error?: string | undefined;
     className?: string | undefined;
-    dropDown?: [categoryType] | undefined;
+    dropDown?: categoryType[] | undefined;
     errorChecker?: (e: string, value?: string) => string;
     ref?: React.LegacyRef<HTMLInputElement>;
   }
