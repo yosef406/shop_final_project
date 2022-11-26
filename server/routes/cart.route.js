@@ -57,7 +57,7 @@ cartRoute.get("/open/:id", async (req, res) => {
             res.status(200).json({ success: true, message: "found last order", order: order });
             return;
         }
-        res.status(200).json({ success: false, message: "no open carts or orders" });
+        res.status(200).json({ success: true, message: "no open carts or orders" });
     } catch (error) {
         console.log("Error: ", error);
         res.status(500).json({ success: false, message: "server error" });
