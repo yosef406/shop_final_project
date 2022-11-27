@@ -13,7 +13,7 @@ export const categorySlice = createSlice({
 
     reducers: {
         addCategories: (state, action) => {
-            state.value = action.payload;
+            state.value = [...state.value, ...action.payload];
         },
 
         removeCategories: (state) => {
