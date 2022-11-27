@@ -48,6 +48,7 @@ export default function Input(
             <input
               disabled={params.disabled}
               defaultValue={params.defaultValue}
+              value={params.value}
               className={`${style.input} ${params.className ?? ""}
           ${errorLabel && errorLabel !== "" ? style.errorIn : ""}`}
               type={params.type ?? "text"}
