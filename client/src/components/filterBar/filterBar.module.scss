@@ -1,0 +1,23 @@
+.container {
+    background-color: white;
+    box-shadow: 0 5px 10px grey;
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.categoryDiv {
+    display: flex;
+}
+
+.newCategory {
+    display: flex;
+    flex-direction: column;
+}
+
+.errorLabel {
+    color: red;
+}
