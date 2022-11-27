@@ -11,15 +11,19 @@ export default function Input(
   }
 ) {
   const [errorLabel, setError] = useState(params.error);
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setError(params.error);
     if (params.onChange) params.onChange(e);
     if (params.errorChecker)
       setError(params.errorChecker(e.target.value, errorLabel));
   };
+
   if (params.type && params.type === "dropDown" && !params.dropDown) {
     console.error("dropDown is required");
   }
+
   return (
     <>
       <div className={`${style.main}`}>
@@ -27,7 +31,7 @@ export default function Input(
         <div className={`${style.inputDiv}`}>
           {params.type && params.type === "dropDown" ? (
             <select
-              onChange={params.onChange}
+              onChange={onChange}
               name={params.label}
               className={`${style.input} ${params.className ?? ""}
             ${errorLabel && errorLabel !== "" ? style.errorIn : ""}`}
