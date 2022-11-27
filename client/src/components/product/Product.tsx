@@ -1,10 +1,12 @@
 import productType from "../../types/productType";
+import useCategories from "../../util/useCategories";
 import Button from "../button/Button";
 import Card from "../card/Card";
 import style from "./product.module.scss";
 
 export default function Product(params: { value?: productType | undefined }) {
   const product = params.value ?? null;
+  const { getCategoryName } = useCategories();
   return (
     <>
       {product != null ? (
@@ -17,7 +19,7 @@ export default function Product(params: { value?: productType | undefined }) {
                 className={style.productImage}
               />
               <h3>{product?.name}</h3>
-              <label>{product?.category}</label>
+              <label>{getCategoryName(product?.category)}</label>
               <h3>{product?.price} $</h3>
               <div className={style.productButton}>
                 <Button onClick={() => {}}>Add</Button>
