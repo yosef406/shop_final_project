@@ -19,7 +19,14 @@ export default function NewProduct(params: { exit: any }) {
   });
 
   useEffect(() => {
-    if (data?.success) {
+    if (data && data.message === "product added") {
+      setProduct({
+        _id: "",
+        name: "",
+        image: "",
+        price: 0,
+        category: "",
+      });
       params.exit();
     }
     if (error !== "") {
