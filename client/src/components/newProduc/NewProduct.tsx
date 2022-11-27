@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import productType from "../../types/productType";
 import useCategories from "../../util/useCategories";
 import useFetch from "../../util/useFetch";
+import useProduct from "../../util/useProduct";
 import Button from "../button/Button";
 import Input from "../input/Input";
 import style from "./newProduct.module.scss";
@@ -9,6 +10,7 @@ import style from "./newProduct.module.scss";
 export default function NewProduct(params: { exit: any }) {
   const { data, error, loading, request } = useFetch();
   const { categories } = useCategories();
+  const { insertProduct } = useProduct();
   const [inErr, setInErr] = useState("");
   const [product, setProduct] = useState<productType>({
     _id: "",
@@ -29,6 +31,8 @@ export default function NewProduct(params: { exit: any }) {
         category: "",
         __v: 0,
       });
+
+      insertProduct(data.newProduct);
       params.exit();
     }
     if (error !== "") {
