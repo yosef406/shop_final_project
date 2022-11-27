@@ -1,16 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-    addProducts as add, removeProducts as remove, getProducts
+    addProducts as add, removeProducts as remove, insertProduct as insert, getProducts
 } from "../data/slices/productsSlice"
 
 import productType from "../types/productType";
 
-export default function useCategories() {
+export default function useProduct() {
     const dispatch = useDispatch();
     const products = useSelector(getProducts);
 
-    const addProducts = (categories: productType[]) => dispatch(add(categories));
+    const addProducts = (products: productType[]) => dispatch(add(products));
+    const insertProduct = (product: productType) => dispatch(insert(product));
     const removeProducts = () => dispatch(remove());
 
-    return { addProducts, removeProducts, products };
+    return { addProducts, removeProducts, products, insertProduct };
 }

@@ -16,8 +16,11 @@ export const productsSlice = createSlice({
     },
 
     reducers: {
+        insertProduct: (state, action) => {
+            state.value = [...state.value, action.payload];
+        },
         addProducts: (state, action) => {
-            state.value = [...action.payload];
+            state.value = action.payload;
         },
 
         removeProducts: (state) => {
@@ -33,7 +36,7 @@ export const productsSlice = createSlice({
     },
 });
 
-export const { addProducts, removeProducts } = productsSlice.actions;
+export const { addProducts, removeProducts, insertProduct } = productsSlice.actions;
 
 export const getProducts = (state: { products: { value: productType[] } }) => state.products.value;
 
