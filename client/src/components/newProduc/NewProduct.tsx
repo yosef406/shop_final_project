@@ -16,6 +16,7 @@ export default function NewProduct(params: { exit: any }) {
     image: "",
     price: 0,
     category: "",
+    __v: 0,
   });
 
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function NewProduct(params: { exit: any }) {
         image: "",
         price: 0,
         category: "",
+        __v: 0,
       });
       params.exit();
     }

@@ -3,5 +3,6 @@ export default interface productType {
     name: string,
     image: string,
     price: number,
-    category: string
+    category: string,
+    __v: number
 }
