@@ -1,5 +1,6 @@
 import productType from "../../types/productType";
 import useCategories from "../../util/useCategories";
+import useUser from "../../util/useUser";
 import Button from "../button/Button";
 import Card from "../card/Card";
 import style from "./product.module.scss";
@@ -7,6 +8,7 @@ import style from "./product.module.scss";
 export default function Product(params: { value?: productType | undefined }) {
   const product = params.value ?? null;
   const { getCategoryName } = useCategories();
+  const { role } = useUser();
   return (
     <>
       {product != null ? (
@@ -21,9 +23,13 @@ export default function Product(params: { value?: productType | undefined }) {
               <h3>{product?.name}</h3>
               <label>{getCategoryName(product?.category)}</label>
               <h3>{product?.price} $</h3>
-              <div className={style.productButton}>
-                <Button onClick={() => {}}>Add</Button>
-              </div>
+              {role !== "admin" ? (
+                <div className={style.productButton}>
+                  <Button onClick={() => {}}>Add</Button>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </Card>
         </>
