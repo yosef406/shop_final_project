@@ -6,6 +6,7 @@ export const categorySlice = createSlice({
     name: 'category',
     initialState: {
         value: [{
+            __v: 0,
             _id: "",
             name: "",
         }]
@@ -13,11 +14,12 @@ export const categorySlice = createSlice({
 
     reducers: {
         addCategories: (state, action) => {
-            state.value = [...state.value, ...action.payload];
+            state.value = [{ __v: 0, _id: "", name: "" }, ...action.payload];
         },
 
         removeCategories: (state) => {
             state.value = [{
+                __v: 0,
                 _id: "",
                 name: "",
             }]
