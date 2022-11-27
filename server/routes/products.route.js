@@ -51,8 +51,9 @@ productsRoute.get("/filter/:category", (req, res) => {
 
 productsRoute.post("/new", async (req, res) => {
     try {
-        let product = { name, image, price, category } = req.body;
-        let newProduct = await productsModel.create(product);
+        let { name, image, price, category } = req.body;
+
+        let newProduct = await productsModel.create({ name, image, price, category });
         if (newProduct != null) {
             res.status(200).json({ success: true, message: "product added", newProduct });
         } else {
