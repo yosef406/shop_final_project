@@ -8,9 +8,11 @@ import style from "./cartItem.module.scss";
 export default function CartItem({
   val,
   disabled,
+  deletable,
 }: {
   val: { _id: string; num: number };
   disabled: boolean;
+  deletable: boolean;
 }) {
   const { addCart, cart } = useCart();
   const { products } = useProduct();
@@ -30,17 +32,21 @@ export default function CartItem({
           {products.filter((prod) => prod._id === val._id)[0]?.price * val.num}{" "}
           $
         </h2>
-        <Button
-          loading={loading}
-          disabled={disabled}
-          onClick={() =>
-            request.post("/cart/remove-product/" + cart._id, {
-              productId: val._id,
-            })
-          }
-        >
-          X
-        </Button>
+        {deletable ? (
+          <Button
+            loading={loading}
+            disabled={disabled}
+            onClick={() =>
+              request.post("/cart/remove-product/" + cart._id, {
+                productId: val._id,
+              })
+            }
+          >
+            X
+          </Button>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
