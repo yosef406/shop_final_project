@@ -4,6 +4,7 @@ import useFetch from "../../util/useFetch";
 import Loading from "../loading/Loading";
 import { useEffect, useState } from "react";
 import useUser from "../../util/useUser";
+import { addCart } from "../../data/slices/cartSlice";
 function Featured() {
   const { data, loading, error, request } = useFetch("/product/featured");
   const { signedIn, user } = useUser();
@@ -16,6 +17,7 @@ function Featured() {
       switch (data.message) {
         case "found open cart":
           setNotification("You have an open Cart.");
+          addCart(data.cart);
           break;
         case "found last order":
           setNotification("You have no open Carts.");
@@ -44,7 +46,7 @@ function Featured() {
     <>
       <Card>
         <div className={style.container}>
-          <img src={featImg} alt="product" />
+          <img src={featImg} className={style.image} alt="product" />
           {loading ? (
             <Loading size={5} />
           ) : (

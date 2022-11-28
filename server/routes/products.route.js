@@ -4,6 +4,7 @@ const express = require('express');
 const productsRoute = express.Router();
 const productsModel = require("../models/product.model");
 const ordersModel = require("../models/order.model");
+const orderModel = require('../models/order.model');
 
 
 // get all products
@@ -25,7 +26,11 @@ productsRoute.get("/featured", async (req, res) => {
     try {
         let productCount = await productsModel.count()
         let orderCount = await ordersModel.count();
+        let product = await productsModel.findOne();
         let imageData = ""
+        if (product != null) {
+            imageData = product.image
+        }
 
         res.status(200).json({ success: true, message: "found featured", result: { productCount, orderCount, imageData } })
     } catch (error) {
