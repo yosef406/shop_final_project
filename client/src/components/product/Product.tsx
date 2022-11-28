@@ -1,5 +1,8 @@
+import { useEffect } from "react";
 import productType from "../../types/productType";
+import useCart from "../../util/useCart";
 import useCategories from "../../util/useCategories";
+import useFetch from "../../util/useFetch";
 import useUser from "../../util/useUser";
 import Button from "../button/Button";
 import Card from "../card/Card";
@@ -8,7 +11,15 @@ import style from "./product.module.scss";
 export default function Product(params: { value?: productType | undefined }) {
   const product = params.value ?? null;
   const { getCategoryName } = useCategories();
+  const { addCart, cart } = useCart();
+  const { data, loading, request } = useFetch();
   const { role } = useUser();
+
+  useEffect(() => {
+    if (data && data.message === "product added to cart") {
+      addCart(data.cart);
+    }
+  }, [data]);
   return (
     <>
       {product != null ? (
@@ -25,7 +36,18 @@ export default function Product(params: { value?: productType | undefined }) {
               <h3>{product?.price} $</h3>
               {role !== "admin" ? (
                 <div className={style.productButton}>
-                  <Button onClick={() => {}}>Add</Button>
+                  <Button
+                    loading={loading}
+                    onClick={() => {
+                      if (params.value?._id) {
+                        request.post("/cart/add-product/" + cart._id, {
+                          productId: params.value?._id,
+                        });
+                      }
+                    }}
+                  >
+                    Add
+                  </Button>
                 </div>
               ) : (
                 ""
