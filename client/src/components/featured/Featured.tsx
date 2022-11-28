@@ -14,13 +14,9 @@ function Featured() {
   const [orderCnt, setOrderCnt] = useState(0);
   const [notification, setNotification] = useState("");
   useEffect(() => {
-    console.log(data);
-
     if (data) {
       switch (data.message) {
         case "found open cart":
-          console.log(data.cart);
-
           setNotification("You have an open Cart.");
           addCart(data.cart);
           break;
