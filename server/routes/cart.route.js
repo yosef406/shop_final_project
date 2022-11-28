@@ -65,9 +65,9 @@ cartRoute.get("/open/:id", async (req, res) => {
 });
 
 // add a product to an open cart
-cartRoute.patch("/add-product/:cartId", controller.addProduct);
+cartRoute.post("/add-product/:cartId", controller.addProduct);
 
 // remove a product from an open cart
-cartRoute.patch("/remove-product/:cartId", controller.removeProduct);
+cartRoute.post("/remove-product/:cartId", controller.removeProduct);
 
 module.exports = cartRoute;
