@@ -5,12 +5,14 @@ import Card from "../card/Card";
 import Button from "../button/Button";
 import useFetch from "../../util/useFetch";
 import useUser from "../../util/useUser";
+import useCart from "../../util/useCart";
 
 function LogIn() {
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const { data, loading, error, request } = useFetch();
   const { addUser, signedIn, user, removeUser } = useUser();
+  const { cart, addCart } = useCart();
   const navigate = useNavigate();
 
   const logInBtn = () => {
@@ -21,12 +23,20 @@ function LogIn() {
   };
 
   const startShoppingBtn = () => {
-    navigate("/");
+    if (cart._id !== "" || user.role === "admin") {
+      navigate("/");
+    } else {
+      request.post("/cart/new/" + user._id, {});
+    }
   };
 
   useEffect(() => {
-    if (data) {
+    if (data && data.message === "login success.") {
       addUser(data.user);
+    }
+    if (data && data.message === "cart created") {
+      addCart(data.cart);
+      navigate("/");
     }
   }, [data]);
 
