@@ -29,6 +29,7 @@ export default function Cart() {
       addCart(data.cart);
     }
   }, [data]);
+
   return (
     <>
       {role === "admin" ? (
@@ -54,7 +55,7 @@ export default function Cart() {
       ) : (
         <>
           <PopUp setDisplay={setCheckOut} display={checkOut}>
-            <CheckOut />
+            <CheckOut close={setCheckOut} />
           </PopUp>
           <div className={style.container}>
             <Card className={style.cart}>
