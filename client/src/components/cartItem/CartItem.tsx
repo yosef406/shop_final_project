@@ -20,13 +20,15 @@ export default function CartItem({
       addCart(data.cart);
     }
   }, [data]);
+
   return (
     <>
       <div className={style.row}>
         <h2>X{val.num}</h2>
-        <h3>{products.filter((prod) => prod._id === val._id)[0].name}</h3>
+        <h3>{products.filter((prod) => prod._id === val._id)[0]?.name}</h3>
         <h2>
-          {products.filter((prod) => prod._id === val._id)[0].price * val.num} $
+          {products.filter((prod) => prod._id === val._id)[0]?.price * val.num}{" "}
+          $
         </h2>
         <Button
           loading={loading}
