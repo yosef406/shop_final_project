@@ -1,0 +1,17 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(177, 253, 253, 0.438);
+    width: 95%;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+
+    * {
+        margin: 0;
+    }
+}
