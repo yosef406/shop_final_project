@@ -10,7 +10,7 @@ export default function useCategories() {
     const categories = useSelector(getCategories);
 
     const getCategoryName = (_id: string) => {
-        return categories.filter((val) => val._id === _id)[0].name;
+        return categories.filter((val) => val._id === _id)[0]?.name;
     }
     const addCategories = (categories: categoryType[]) => dispatch(add(categories));
     const removeCategories = () => dispatch(remove());
