@@ -22,7 +22,7 @@ cartRoute.post("/new/:id", async (req, res) => {
 });
 
 // close an open cart for user
-cartRoute.patch("/order/:cartId", async (req, res) => {
+cartRoute.post("/order/:cartId", async (req, res) => {
     try {
         let cart = await cartModel.findById(req.params.cartId)
         cart.open = false;
