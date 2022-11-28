@@ -4,18 +4,23 @@ import useFetch from "../../util/useFetch";
 import Loading from "../loading/Loading";
 import { useEffect, useState } from "react";
 import useUser from "../../util/useUser";
-import { addCart } from "../../data/slices/cartSlice";
+import useCart from "../../util/useCart";
 function Featured() {
   const { data, loading, error, request } = useFetch("/product/featured");
+  const { addCart } = useCart();
   const { signedIn, user } = useUser();
   const [featImg, setFeatImg] = useState("");
   const [productCnt, setProductCnt] = useState(0);
   const [orderCnt, setOrderCnt] = useState(0);
   const [notification, setNotification] = useState("");
   useEffect(() => {
+    console.log(data);
+
     if (data) {
       switch (data.message) {
         case "found open cart":
+          console.log(data.cart);
+
           setNotification("You have an open Cart.");
           addCart(data.cart);
           break;
