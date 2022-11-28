@@ -14,13 +14,13 @@ async function productController(req, res, callback) {
             return;
         }
         let cart = await cartModel.findById(req.params.cartId)
-        let message = "";
         if (cart != null && cart.open) {
-            if (callback(cart, product, message)) {
+            let message = callback(cart, product);
+            if (message == "product added to cart" || message == "product removed from cart") {
                 await cart.save();
                 res.status(200).json({ success: true, message, cart });
             } else {
-                res.status(500).json({ success: false, message: "product does not exist in cart" });
+                res.status(200).json({ success: false, message, cart });
             }
         } else {
             res.status(200).json({ success: false, message: "no open cart with this id" });
@@ -34,11 +34,10 @@ async function productController(req, res, callback) {
 }
 
 exports.addProduct = async (req, res) => {
-    productController(req, res, (cart, product, message) => {
+    productController(req, res, (cart, product) => {
         cart.products.push(product._id);
         cart.total_price += product.price;
-        message = "product added to cart";
-        return true;
+        return "product added to cart";
     });
 }
 
@@ -48,10 +47,8 @@ exports.removeProduct = async (req, res) => {
             let index = cart.products.indexOf(product._id);
             cart.products.splice(index, 1);
             cart.total_price -= product.price;
-            message = "product removed from cart";
-            return true;
+            return "product removed from cart";
         }
-        message = "product does not exist in cart"
-        return false;
+        return "product does not exist in cart";
     });
 }
