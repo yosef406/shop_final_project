@@ -45,6 +45,7 @@ export default function NewProduct(params: { exit: any }) {
         <h2>Add new Product</h2>
         <Input
           label="name"
+          value={product.name}
           errorChecker={(e) => {
             setInErr("");
             setProduct((val) => {
@@ -56,6 +57,7 @@ export default function NewProduct(params: { exit: any }) {
         />
         <Input
           label="image"
+          value={product.image}
           errorChecker={(e) => {
             setInErr("");
             setProduct((val) => {
@@ -68,6 +70,7 @@ export default function NewProduct(params: { exit: any }) {
         />
         <Input
           label="price"
+          value={product.price}
           errorChecker={(e) => {
             setInErr("");
             setProduct((val) => {
@@ -85,6 +88,7 @@ export default function NewProduct(params: { exit: any }) {
         />
         <Input
           type="dropDown"
+          value={product.category}
           error="required"
           errorChecker={(e) => {
             setInErr("");

@@ -31,6 +31,7 @@ export default function Input(
         <div className={`${style.inputDiv}`}>
           {params.type && params.type === "dropDown" ? (
             <select
+              value={params.value}
               onChange={onChange}
               name={params.label}
               className={`${style.input} ${params.className ?? ""}
