@@ -35,8 +35,9 @@ the database URL is saved in a `.env` file under the name `DATA_BASE` in order t
 **back-end**
 1. open the installation folder in terminal 
 2. `cd ./server`
-3. `npm i` to install packages
-4. `npm run start` 
+3. add the `.env` file
+4. `npm i` to install packages
+5. `npm run start` 
 
 <br>
 
@@ -44,5 +45,6 @@ the database URL is saved in a `.env` file under the name `DATA_BASE` in order t
 
 1. open the installation folder in terminal 
 2. `cd ./client`
-3. `npm i` to install packages
-4. `npm run start` 
+3. add the `.env` file
+4. `npm i` to install packages
+5. `npm run start` 
