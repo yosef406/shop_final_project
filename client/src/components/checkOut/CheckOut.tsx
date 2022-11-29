@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useCart from "../../util/useCart";
 import useFetch from "../../util/useFetch";
+import useUser from "../../util/useUser";
 import Button from "../button/Button";
 import CartItem from "../cartItem/CartItem";
 import Input from "../input/Input";
@@ -12,6 +13,7 @@ export default function CheckOut(params: {
   display: boolean;
 }) {
   const { addCart, productCount, cart } = useCart();
+  const { user } = useUser();
   const { data, loading, request } = useFetch();
   const [done, setDone] = useState(false);
   const [orderData, setOrderData] = useState({
@@ -38,6 +40,21 @@ export default function CheckOut(params: {
       }
     }
   }, [data]);
+  const onDoubleClick = () => {
+    let date = new Date();
+
+    setOrderData({
+      ...orderData,
+      delivery_city: user.city,
+      delivery_street: user.street,
+      delivery_date:
+        date.getFullYear() +
+        "-" +
+        (date.getMonth() + 1) +
+        "-" +
+        (date.getDate() + 1),
+    });
+  };
   return (
     <>
       <PopUp setDisplay={params.setDisplay} display={params.display}>
@@ -78,6 +95,7 @@ export default function CheckOut(params: {
               <Input
                 label="City"
                 value={orderData.delivery_city}
+                onDoubleClick={onDoubleClick}
                 errorChecker={(e) => {
                   setOrderData({ ...orderData, delivery_city: e });
                   if (e === "") return "required";
@@ -87,6 +105,7 @@ export default function CheckOut(params: {
               <Input
                 label="Street"
                 value={orderData.delivery_street}
+                onDoubleClick={onDoubleClick}
                 errorChecker={(e) => {
                   setOrderData({ ...orderData, delivery_street: e });
                   if (e === "") return "required";

@@ -53,6 +53,7 @@ export default function Input(
           ${errorLabel && errorLabel !== "" ? style.errorIn : ""}`}
               type={params.type ?? "text"}
               onChange={onChange}
+              onDoubleClick={params.onDoubleClick}
             />
           )}
           <label>{errorLabel}</label>
