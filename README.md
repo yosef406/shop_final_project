@@ -3,7 +3,8 @@ This Client and Server project, is my final project while studying **Full-Stack 
 The project is simulating a store website and server.
 
 ## Front-End
-The front-end was built using react, i tried to work on it with a more professional approach, like building multiple components and using custom Hooks.
+The front-end was built using react, i tried to work on it with a more professional approach, like building multiple components and using custom Hooks.<br>
+built using redux and router packages.
 ### components
 - a custom button with multiple states (disabled, loading, active) each with animation.
 - input one component that takes a label and an error string with checkError function and design for all.
