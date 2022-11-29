@@ -8,7 +8,7 @@ import useCart from "../../util/useCart";
 function Featured() {
   const { data, loading, error, request } = useFetch("/product/featured");
   const { addCart } = useCart();
-  const { signedIn, user } = useUser();
+  const { signedIn, user, role } = useUser();
   const [featImg, setFeatImg] = useState("");
   const [productCnt, setProductCnt] = useState(0);
   const [orderCnt, setOrderCnt] = useState(0);
@@ -24,7 +24,9 @@ function Featured() {
           setNotification("You have no open Carts.");
           break;
         case "no open carts or orders":
-          setNotification("Welcome new user.");
+          role === "admin"
+            ? setNotification("Welcome admin.")
+            : setNotification("Welcome new user.");
           break;
         case "found featured":
           setFeatImg(data.result.imageData);

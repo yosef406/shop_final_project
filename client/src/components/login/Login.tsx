@@ -11,7 +11,7 @@ function LogIn() {
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const { data, loading, error, request } = useFetch();
-  const { addUser, signedIn, user, removeUser } = useUser();
+  const { addUser, signedIn, user, removeUser, role } = useUser();
   const { cart, addCart } = useCart();
   const navigate = useNavigate();
 
@@ -52,7 +52,9 @@ function LogIn() {
               <h1>address: {`${user.city} ${user.street}`}</h1>
               <div className={style.logOutDiv}>
                 <div>
-                  <Button onClick={startShoppingBtn}>Start Shopping 🛒</Button>
+                  <Button onClick={startShoppingBtn}>
+                    {role === "admin" ? "Start editing" : "Start Shopping 🛒"}
+                  </Button>
                 </div>
                 <div>
                   <Button className={style.logOutBtn} onClick={removeUser}>
