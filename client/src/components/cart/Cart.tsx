@@ -54,9 +54,8 @@ export default function Cart() {
         </>
       ) : (
         <>
-          <PopUp setDisplay={setCheckOut} display={checkOut}>
-            <CheckOut close={setCheckOut} />
-          </PopUp>
+          <CheckOut setDisplay={setCheckOut} display={checkOut} />
+
           <div className={style.container}>
             <Card className={style.cart}>
               <h1>Cart</h1>
