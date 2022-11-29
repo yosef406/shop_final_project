@@ -26,7 +26,7 @@ a restful API that connects to mongoDB and handles all requests from front-end.<
 built using express and mongoose packages.
 ### .env
 the database URL is saved in a `.env` file under the name `DATA_BASE` in order to keep it a secret and for easy editing in the future, the same for the `PORT` number.
-## usage
+## installation and usage
 ### installation
 1. clone the repository `https://github.com/yosef406/shop_final_project.git`
 2. save in a specific folder
