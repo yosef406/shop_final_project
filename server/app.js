@@ -8,6 +8,7 @@ const cartsRoute = require("./routes/cart.route");
 const categoryRoute = require("./routes/category.route");
 
 // setups
+const app = express();
 const PORT = process.env.PORT;
 
 // uses
