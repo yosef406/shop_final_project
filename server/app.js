@@ -1,6 +1,5 @@
 // imports
 const express = require("express");
-const dotenv = require('dotenv');
 const cors = require('cors');
 const DataBase = require("./database/DataBase");
 const usersRoute = require("./routes/users.route");
@@ -9,8 +8,6 @@ const cartsRoute = require("./routes/cart.route");
 const categoryRoute = require("./routes/category.route");
 
 // setups
-const app = express();
-dotenv.config();
 const PORT = process.env.PORT;
 
 // uses

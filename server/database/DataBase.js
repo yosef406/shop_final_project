@@ -1,10 +1,6 @@
 // imports
 const { default: mongoose } = require("mongoose");
 
-// setups
-const dotenv = require('dotenv');
-dotenv.config();
-
 // main class
 module.exports = class DataBase {
     static #DATA_BASE = process.env.DATA_BASE;
