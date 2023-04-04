@@ -6,7 +6,7 @@ function About() {
       <Card>
         <div className={style.container}>
           <img
-            src="https://pbs.twimg.com/profile_images/1544326649940004864/sN0d5sy0_400x400.jpg"
+            src="https://media.licdn.com/dms/image/C560BAQF-93WV2paucg/company-logo_200_200/0/1589311298682?e=2147483647&v=beta&t=gXZxH9j8QWTRY0V76lejqoeUKSGq9kc00YWkF1b3iz0"
             alt="about"
           />
           <div>
